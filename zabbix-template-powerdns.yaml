@@ -1,0 +1,1017 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-07-18T07:41:47Z'
+  groups:
+    -
+      uuid: 7df96b18c230490a9a0a9e2307226338
+      name: Templates
+  templates:
+    -
+      uuid: cf49f03ca85843baac5ece32ae303acf
+      template: 'Template - PowerDNS Recursor'
+      name: 'Template - PowerDNS Recursor'
+      groups:
+        -
+          name: Templates
+      items:
+        -
+          uuid: b293e432e3f54f9f880f6546b2ad1a87
+          name: corrupt-packets
+          type: DEPENDENT
+          key: powerdns.corrupt_packets
+          delay: '0'
+          units: qps
+          description: 'Number of corrupt packets received'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bcorrupt-packets=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: fd80617a33ec446b95995660c974486b
+          name: deferred-cache-inserts
+          type: DEPENDENT
+          key: powerdns.deferred_cache_inserts
+          delay: '0'
+          units: qps
+          description: 'Number of cache inserts that were deferred because of maintenance.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bdeferred-cache-inserts=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: ee80c096d60d44fbba705a3378448ec5
+          name: deferred-cache-lookup
+          type: DEPENDENT
+          key: powerdns.deferred_cache_lookup
+          delay: '0'
+          units: qps
+          description: 'Number of cache lookups that were deferred because of maintenance.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bdeferred-cache-lookup=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: f6a5de54a9d847b8a950bb21ef7e1abc
+          name: dnsupdate-changes
+          type: DEPENDENT
+          key: powerdns.dnsupdate-changes
+          delay: '0'
+          units: qps
+          description: 'Total number of changes to records from DNS update.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bdnsupdate-changes=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 554388ff73b34e74abe668143e48ae0e
+          name: dnsupdate-answers
+          type: DEPENDENT
+          key: powerdns.dnsupdate_answers
+          delay: '0'
+          description: 'Number of DNS update packets successfully answered.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bdnsupdate-answers=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: b12377f19f994ff2917e956f31507636
+          name: dnsupdate-queries
+          type: DEPENDENT
+          key: powerdns.dnsupdate_queries
+          delay: '0'
+          units: qps
+          description: 'Number of DNS update packets received.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bdnsupdate-queries=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 2b2dad77b51a477d88a8aeb7933fa75f
+          name: dnsupdate-refused
+          type: DEPENDENT
+          key: powerdns.dnsupdate_refused
+          delay: '0'
+          units: qps
+          description: 'Number of DNS update packets that were refused.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bdnsupdate-refused=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: e249d5e1487f49409e369e558569a7c2
+          name: key-cache-size
+          type: DEPENDENT
+          key: powerdns.key_cache_size
+          delay: '0'
+          units: qps
+          description: 'Number of entries in the key cache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bkey-cache-size=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: cf7cd53025874798b55c88ff66d3deee
+          name: latency
+          type: DEPENDENT
+          key: powerdns.latency
+          delay: '0'
+          units: μs
+          description: 'Average number of microseconds a packet spends within PowerDNS.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\blatency=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 4357c7b175794bdca4989da34b28784e
+          name: meta-cache-size
+          type: DEPENDENT
+          key: powerdns.meta_cache_size
+          delay: '0'
+          units: entries
+          description: 'Number of entries in the metadata cache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bmeta-cache-size=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: bd2fe94c0b9e4239879f827114a8737e
+          name: packetcache-hit
+          type: DEPENDENT
+          key: powerdns.packetcache_hit
+          delay: '0'
+          units: qps
+          description: 'Number of packets which were answered out of the cache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bpacketcache-hit=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 6924e01a5d914edba02a3b8b8a3e28df
+          name: packetcache-miss
+          type: DEPENDENT
+          key: powerdns.packetcache_miss
+          delay: '0'
+          units: qps
+          description: 'Number of times a packet could not be answered out of the cache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bpacketcache-miss=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: e2fde065af2041988a9d3a3b25906d63
+          name: packetcache-size
+          type: DEPENDENT
+          key: powerdns.packetcache_size
+          delay: '0'
+          description: 'Amount of packets in the packetcache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bpacketcache-size=([^,]*)'
+                - \1
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: e7969b93366342e6b62f5d5709b0d215
+          name: qsize-q
+          type: DEPENDENT
+          key: powerdns.qsize_q
+          delay: '0'
+          description: 'Number of packets waiting for database attention.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bqsize-q=([^,]*)'
+                - \1
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 6d960e076ec145a2af509925cef5207a
+          name: query-cache-hit
+          type: DEPENDENT
+          key: powerdns.query_cache_hit
+          delay: '0'
+          units: qps
+          description: 'Number of hits on the query cache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bquery-cache-hit=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 8a2c8cf5f3f54081a38453bc7601af29
+          name: query-cache-miss
+          type: DEPENDENT
+          key: powerdns.query_cache_miss
+          delay: '0'
+          units: qps
+          description: 'Number of misses on the query cache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bquery-cache-miss=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: fa24fcaab069423d8dab666ff2ab4877
+          name: rd-queries
+          type: DEPENDENT
+          key: powerdns.rd_queries
+          delay: '0'
+          units: qps
+          description: 'Number of packets sent by clients requesting recursion (regardless of if we''ll be providing them with recursion).'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\brd-queries=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 53def670c15546c69b2c26c0a7764ad8
+          name: recursing-answers
+          type: DEPENDENT
+          key: powerdns.recursing_answers
+          delay: '0'
+          units: qps
+          description: 'Number of packets we supplied an answer to after recursive processing.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\brecursing-answers=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 19b46491550049afb553b0b2550aa263
+          name: recursing-questions
+          type: DEPENDENT
+          key: powerdns.recursing_questions
+          delay: '0'
+          units: qps
+          description: 'Number of packets we performed recursive processing for.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\brecursing-questions=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 0628453a70e348d19c26faa6b6e36e2f
+          name: recursion-unanswered
+          type: DEPENDENT
+          key: powerdns.recursion_unanswered
+          delay: '0'
+          units: qps
+          description: 'Number of packets we sent to our recursor, but did not get a timely answer for.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\brecursion-unanswered=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 10592cdc4bf84531a83c5dbb7c025ef6
+          name: security-status
+          type: DEPENDENT
+          key: powerdns.security_status
+          delay: '0'
+          description: |
+            Security status based on security polling. (https://doc.powerdns.com/md/common/security/#security-polling)
+            
+            0: NXDOMAIN or resolution failure
+            1: OK
+            2: Upgrade recommended for security reasons
+            3: Upgrade mandatory for security reasons
+          valuemap:
+            name: 'PowerDNS Security Status'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bsecurity-status=([^,]*)'
+                - \1
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+          triggers:
+            -
+              uuid: 3aac50a8daa64e90a62166ac0b42fa2d
+              expression: 'last(/Template - PowerDNS Recursor/powerdns.security_status)=3'
+              name: 'PowerDNS upgrade is mandatory'
+              priority: HIGH
+              dependencies:
+                -
+                  name: 'PowerDNS upgrade is recommended'
+                  expression: 'last(/Template - PowerDNS Recursor/powerdns.security_status)=2'
+            -
+              uuid: 0cbeed6bc935449882f2f29dc4ee0903
+              expression: 'last(/Template - PowerDNS Recursor/powerdns.security_status)=2'
+              name: 'PowerDNS upgrade is recommended'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: f065f60627444f3d88146b354ab3fc85
+          name: servfail-packets
+          type: DEPENDENT
+          key: powerdns.servfail_packets
+          delay: '0'
+          units: qps
+          description: 'Amount of packets that could not be answered due to database problems.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bservfail-packets=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: c244e566843646369307cdf01ae68bef
+          name: signatures
+          type: DEPENDENT
+          key: powerdns.signatures
+          delay: '0'
+          description: 'Number of DNSSEC signatures created.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bsignatures=([^,]*)'
+                - \1
+            -
+              type: SIMPLE_CHANGE
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 5a10bb0ada58434a9d213c37be5e7101
+          name: signature-cache-size
+          type: DEPENDENT
+          key: powerdns.signature_cache_size
+          delay: '0'
+          description: 'Number of entries in the signature cache.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bsignature-cache-size=([^,]*)'
+                - \1
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 54ad47dc2ecc4910951f0a7e9a676b29
+          name: 'Raw PowerDNS statistics'
+          type: ZABBIX_ACTIVE
+          key: powerdns.stats
+          trends: '0'
+          value_type: TEXT
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: cfd5ed67e8c1449a9656081c8f4257d8
+          name: sys-msec
+          type: DEPENDENT
+          key: powerdns.sys_msec
+          delay: '0'
+          description: 'Number of CPU milliseconds spent in ''system'' mode.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\bsys-msec=([^,]*)'
+                - \1
+            -
+              type: SIMPLE_CHANGE
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: b91dfc498f5742e8b11129856d22269d
+          name: tcp-answers
+          type: DEPENDENT
+          key: powerdns.tcp_answers
+          delay: '0'
+          units: qps
+          description: 'Number of answers sent out over TCP.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\btcp-answers=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: b3472baee74342a89a70dac17ea18814
+          name: tcp-queries
+          type: DEPENDENT
+          key: powerdns.tcp_queries
+          delay: '0'
+          units: qps
+          description: 'Number of questions received over TCP.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\btcp-queries=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 2acfea2201554c1db005f1a682d8d8e7
+          name: timedout-packets
+          type: DEPENDENT
+          key: powerdns.timedout_packets
+          delay: '0'
+          units: qps
+          description: 'Amount of packets that were dropped because they had to wait too long internally.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\btimedout-packets=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: c0e6ee5fa6ee449eb14dc0661f00baca
+          name: udp4-answers
+          type: DEPENDENT
+          key: powerdns.udp4_answers
+          delay: '0'
+          units: qps
+          description: 'Number of answers sent out over UDPv4.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp4-answers=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 1dbeec122cc342498cae9638f597ea88
+          name: udp4-queries
+          type: DEPENDENT
+          key: powerdns.udp4_queries
+          delay: '0'
+          units: qps
+          description: 'Number of questions received over UDPv4.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp4-queries=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: b2201e3e912a4f97972391b4bdb7fd1d
+          name: udp6-answers
+          type: DEPENDENT
+          key: powerdns.udp6_answers
+          delay: '0'
+          units: qps
+          description: 'Number of answers sent out over UDPv6.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp6-answers=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: e6699e15126d4a75adcba7e2b911171a
+          name: udp6-queries
+          type: DEPENDENT
+          key: powerdns.udp6_queries
+          delay: '0'
+          units: qps
+          description: 'Number of questions received over UDPv6.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp6-queries=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 1a21eff82658414cab3f05d0ef85a923
+          name: udp-answers
+          type: DEPENDENT
+          key: powerdns.udp_answers
+          delay: '0'
+          units: qps
+          description: 'Number of answers sent out over UDP.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp-answers=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 363cc4f8288a483b8e4a5a9e043e39d3
+          name: udp-answers-bytes
+          type: DEPENDENT
+          key: powerdns.udp_answers_bytes
+          delay: '0'
+          units: B
+          description: 'Total number of answer bytes sent over UDP.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp-answers-bytes=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: b8280ed8e6474f46bf375aed136bd543
+          name: udp-do-queries
+          type: DEPENDENT
+          key: powerdns.udp_do_queries
+          delay: '0'
+          units: qps
+          description: 'Number of queries received with the DO (DNSSEC OK) bit set.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp-do-queries=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 3fd35856c53f42a48e729f8c4e1b9fda
+          name: udp-queries
+          type: DEPENDENT
+          key: powerdns.udp_queries
+          delay: '0'
+          units: qps
+          description: 'Number of questions received over UDP.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\budp-queries=([^,]*)'
+                - \1
+            -
+              type: CHANGE_PER_SECOND
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: e13719ba35e841878cf521ea199ac704
+          name: uptime
+          type: DEPENDENT
+          key: powerdns.uptime
+          delay: '0'
+          units: uptime
+          description: 'Uptime in seconds of the daemon.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\buptime=([^,]*)'
+                - \1
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 8176874a307244fc8a29277fc1cd162d
+          name: user-msec
+          type: DEPENDENT
+          key: powerdns.user_msec
+          delay: '0'
+          description: 'Number of CPU milliseconds spent in ''user'' mode.'
+          preprocessing:
+            -
+              type: REGEX
+              parameters:
+                - '\buser-msec=([^,]*)'
+                - \1
+            -
+              type: SIMPLE_CHANGE
+              parameters:
+                - ''
+          master_item:
+            key: powerdns.stats
+          tags:
+            -
+              tag: component
+              value: powerdns
+        -
+          uuid: 8252dabcf1ed45ed99aed3957f60e2b9
+          name: 'PowerDNS service is running'
+          type: ZABBIX_ACTIVE
+          key: 'proc.num[pdns_server]'
+          tags:
+            -
+              tag: component
+              value: powerdns
+          triggers:
+            -
+              uuid: 077ef1a446ed4fffb7604ed84472a549
+              expression: 'last(/Template - PowerDNS Recursor/proc.num[pdns_server])=0'
+              name: 'PowerDNS service is not running'
+              priority: HIGH
+      valuemaps:
+        -
+          uuid: 571ea67f48b9410c97112aba24734f67
+          name: 'PowerDNS Security Status'
+          mappings:
+            -
+              value: '0'
+              newvalue: 'Resolution failure'
+            -
+              value: '1'
+              newvalue: OK
+            -
+              value: '2'
+              newvalue: 'Upgrade recommended'
+            -
+              value: '3'
+              newvalue: 'Upgrade mandatory'
+  graphs:
+    -
+      uuid: 102ca2f2c2ea4446a18e51d5652cb18a
+      name: 'PowerDNS - Cache'
+      type: STACKED
+      graph_items:
+        -
+          color: 199C0D
+          calc_fnc: MAX
+          item:
+            host: 'Template - PowerDNS Recursor'
+            key: powerdns.packetcache_hit
+        -
+          sortorder: '1'
+          color: F63100
+          calc_fnc: MAX
+          item:
+            host: 'Template - PowerDNS Recursor'
+            key: powerdns.packetcache_miss
+    -
+      uuid: 9dcbb6cf01a0490c952c297cb45a77aa
+      name: 'PowerDNS - Queries & Answers'
+      graph_items:
+        -
+          color: 199C0D
+          calc_fnc: ALL
+          item:
+            host: 'Template - PowerDNS Recursor'
+            key: powerdns.tcp_queries
+        -
+          sortorder: '1'
+          color: F63100
+          calc_fnc: ALL
+          item:
+            host: 'Template - PowerDNS Recursor'
+            key: powerdns.udp_queries
+        -
+          sortorder: '2'
+          color: 2774A4
+          calc_fnc: ALL
+          item:
+            host: 'Template - PowerDNS Recursor'
+            key: powerdns.tcp_answers
+        -
+          sortorder: '3'
+          color: F7941D
+          calc_fnc: ALL
+          item:
+            host: 'Template - PowerDNS Recursor'
+            key: powerdns.udp_answers

@@ -8,8 +8,8 @@ zabbix_export:
   templates:
     -
       uuid: cf49f03ca85843baac5ece32ae303acf
-      template: 'Template - PowerDNS Recursor'
-      name: 'Template - PowerDNS Recursor'
+      template: 'Template - PowerDNS Authoritative'
+      name: 'Template - PowerDNS Authoritative'
       groups:
         -
           name: Templates
@@ -513,16 +513,16 @@ zabbix_export:
           triggers:
             -
               uuid: 3aac50a8daa64e90a62166ac0b42fa2d
-              expression: 'last(/Template - PowerDNS Recursor/powerdns.security_status)=3'
+              expression: 'last(/Template - PowerDNS Authoritative/powerdns.security_status)=3'
               name: 'PowerDNS upgrade is mandatory'
               priority: HIGH
               dependencies:
                 -
                   name: 'PowerDNS upgrade is recommended'
-                  expression: 'last(/Template - PowerDNS Recursor/powerdns.security_status)=2'
+                  expression: 'last(/Template - PowerDNS Authoritative/powerdns.security_status)=2'
             -
               uuid: 0cbeed6bc935449882f2f29dc4ee0903
-              expression: 'last(/Template - PowerDNS Recursor/powerdns.security_status)=2'
+              expression: 'last(/Template - PowerDNS Authoritative/powerdns.security_status)=2'
               name: 'PowerDNS upgrade is recommended'
               priority: WARNING
               manual_close: 'YES'
@@ -945,7 +945,7 @@ zabbix_export:
           triggers:
             -
               uuid: 077ef1a446ed4fffb7604ed84472a549
-              expression: 'last(/Template - PowerDNS Recursor/proc.num[pdns_server])=0'
+              expression: 'last(/Template - PowerDNS Authoritative/proc.num[pdns_server])=0'
               name: 'PowerDNS service is not running'
               priority: HIGH
       valuemaps:
@@ -975,14 +975,14 @@ zabbix_export:
           color: 199C0D
           calc_fnc: MAX
           item:
-            host: 'Template - PowerDNS Recursor'
+            host: 'Template - PowerDNS Authoritative'
             key: powerdns.packetcache_hit
         -
           sortorder: '1'
           color: F63100
           calc_fnc: MAX
           item:
-            host: 'Template - PowerDNS Recursor'
+            host: 'Template - PowerDNS Authoritative'
             key: powerdns.packetcache_miss
     -
       uuid: 9dcbb6cf01a0490c952c297cb45a77aa
@@ -992,26 +992,26 @@ zabbix_export:
           color: 199C0D
           calc_fnc: ALL
           item:
-            host: 'Template - PowerDNS Recursor'
+            host: 'Template - PowerDNS Authoritative'
             key: powerdns.tcp_queries
         -
           sortorder: '1'
           color: F63100
           calc_fnc: ALL
           item:
-            host: 'Template - PowerDNS Recursor'
+            host: 'Template - PowerDNS Authoritative'
             key: powerdns.udp_queries
         -
           sortorder: '2'
           color: 2774A4
           calc_fnc: ALL
           item:
-            host: 'Template - PowerDNS Recursor'
+            host: 'Template - PowerDNS Authoritative'
             key: powerdns.tcp_answers
         -
           sortorder: '3'
           color: F7941D
           calc_fnc: ALL
           item:
-            host: 'Template - PowerDNS Recursor'
+            host: 'Template - PowerDNS Authoritative'
             key: powerdns.udp_answers
